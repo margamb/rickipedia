@@ -1,22 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const charachtersUrl = 'https://rickandmortyapi.com/api/character';
-const locationsUrl = 'https://rickandmortyapi.com/api/location';
-
-const rickMortyAPI = {
-  getCharacters: async function fetchCharacters() {
-    const res = await fetch(charachtersUrl);
-    const data = await res.json();
-    return data.results;
-    // return fetch(charachtersUrl).then((res) => res.json());
-  },
-
-  getLocation: async function fetchCharacters() {
-    const res = await fetch(locationsUrl);
-    const data = await res.json();
-    return data.results;
-  },
-};
+import rickMortyAPI from './API';
 
 function App() {
   const [characters, setCharacters] = useState([]);
