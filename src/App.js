@@ -7,16 +7,30 @@ function App() {
   useEffect(() => {
     async function fetchCharacters() {
       // Get characters data from API
-      const characters = await rickMortyAPI.getCharacters();
+      const charactersFromApi = await rickMortyAPI.getCharacters();
       // Set character state to that result
-      setCharacters(characters);
+      setCharacters(charactersFromApi);
     }
     fetchCharacters();
   }, []);
 
+  async function handleSubmit(ev) {
+    ev.preventDefault();
+    const { value } = ev.target.elements.searchTerm;
+    const characters = await rickMortyAPI.searchCharacter(value);
+    setCharacters(characters);
+  }
+
   return (
     <div>
-      <input type="text" />
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Type a character name"
+          name="searchTerm"
+          type="text"
+        />
+        <input type="submit" value="Search" />
+      </form>
       {characters.map((character) => (
         <div key={character.name}>
           <h1>{character.name}</h1>
