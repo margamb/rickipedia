@@ -34,6 +34,12 @@ function App() {
       {characters.map((character) => (
         <div key={character.name}>
           <h1>{character.name}</h1>
+          <img src={character.image} />
+          <p>{character.status}</p>
+          <p>{character.species}</p>
+          <p>{character.gender}</p>
+          <p>{character.origin.name}</p>
+          <p>{character.location.name}</p>
         </div>
       ))}
     </div>
