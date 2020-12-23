@@ -28,12 +28,17 @@ function App() {
       <div className="header">
         <h1>Rickipedia</h1>
         <form onSubmit={handleSubmit}>
-          <input
-            placeholder="Type a character name"
-            name="searchTerm"
-            type="text"
-          />
-          <input type="submit" value="Search" />
+          <div className="input">
+            <input
+              className="inputText"
+              placeholder="Type a character name"
+              name="searchTerm"
+              type="text"
+            />
+
+            <input className="inputSearch" type="submit" value="" />
+            <i className="fa fa-search searchImg" aria-hidden="true"></i>
+          </div>
         </form>
       </div>
       <div className="cards">
