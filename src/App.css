@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cards {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 348px;
+  height: 496px;
+  margin: 20px;
+  box-shadow: 3px 3px 10px #aaaaaa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+
+.genderCharacter {
+  margin-top: -6px;
+  display: flex;
+  justify-content: space-between;
+}
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerCard {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heart {
+  font-size: 40px;
+  color: #aaaaaa;
+  margin-top: -10px;
+}
+
+@media only screen and (min-width: 600px) {
+  .header {
+    flex-direction: row;
+    max-width: 500px;
+    margin: auto;
+  }
+}
+
+.imgCharacter {
+  width: 300px;
+  height: 300px;
+}
+.relative {
+  position: relative;
+}
+.imgStatus {
+  position: absolute;
+  top: 256px;
+  right: 6px;
+  width: 40px;
+  height: 40px;
+}
+
+.status {
+  /* margin-left: 113px; */
+  color: #aaaaaa;
+}
+
+.titleCharacter {
+  font-size: 20px;
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.originCharacter {
+  margin-top: 0px;
+}
+
+.typeGrey {
+  color: #aaaaaa;
+}
