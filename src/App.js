@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react';
 import rickMortyAPI from './API';
+import './App.css';
+import dead from './images/dead1.png';
+import alive from './images/alive.png';
+import logoRikMorty from './images/logoRickMorty.png';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -22,21 +26,65 @@ function App() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Type a character name"
-          name="searchTerm"
-          type="text"
+    <main className="body">
+      <header className="header">
+        <img
+          className="logoRickMorty logoRickiHide"
+          src={logoRikMorty}
+          title="Rickipedia"
         />
-        <input type="submit" value="Search" />
-      </form>
-      {characters.map((character) => (
-        <div key={character.name}>
-          <h1>{character.name}</h1>
-        </div>
-      ))}
-    </div>
+        <h1 className="titleRickipedia">Rickipedia</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="input">
+            <input
+              className="inputText"
+              placeholder="Type a character name"
+              name="searchTerm"
+              type="text"
+            />
+
+            <input className="inputSearch" type="submit" value="" />
+            <i className="fa fa-search searchImg" aria-hidden="true"></i>
+          </div>
+        </form>
+      </header>
+      <div className="cards">
+        {characters.map((character) => (
+          <div className="card">
+            <div key={character.name}>
+              <div className="headerCard">
+                <h1 className="titleCharacter">{character.name}</h1>
+                <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+                {/* <i class="fa fa-heart" aria-hidden="true"></i> */}
+              </div>
+              <div className="relative">
+                <img className="imgCharacter" src={character.image} />
+                <img
+                  className="imgStatus"
+                  src={character.status === 'Alive' ? alive : dead}
+                />
+              </div>
+
+              <div className="genderCharacter">
+                <p>
+                  {character.species} {character.gender}
+                </p>
+                <p className="status">{character.status}</p>
+              </div>
+
+              <p className="originCharacter">
+                <span className="typeGrey">Origin:</span>{' '}
+                {character.origin.name}
+              </p>
+              <p className="locationCharacter">
+                <span className="typeGrey">Location:</span>{' '}
+                {character.location.name}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }
 
