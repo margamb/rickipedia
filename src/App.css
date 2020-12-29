@@ -46,7 +46,6 @@ body {
 }
 
 .headerCard {
-  /* background-color: red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,7 +92,6 @@ body {
 }
 
 .status {
-  /* margin-left: 113px; */
   color: var(--gray-600);
 }
 

@@ -26,8 +26,8 @@ function App() {
   }
 
   return (
-    <div className="body">
-      <div className="header">
+    <main className="body">
+      <header className="header">
         <img
           className="logoRickMorty logoRickiHide"
           src={logoRikMorty}
@@ -47,7 +47,7 @@ function App() {
             <i className="fa fa-search searchImg" aria-hidden="true"></i>
           </div>
         </form>
-      </div>
+      </header>
       <div className="cards">
         {characters.map((character) => (
           <div className="card">
@@ -84,7 +84,7 @@ function App() {
           </div>
         ))}
       </div>
-    </div>
+    </main>
   );
 }
 
