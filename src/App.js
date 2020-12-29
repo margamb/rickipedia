@@ -6,6 +6,21 @@ import CharacterCard from './components/CharacterCard';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [favorites, setFavorites] = useState([]);
+
+  const handleFavorited = ({ id, name, image }) => {
+    // si la id del objeto esta en favoritos quitarla
+    const favIndex = favorites.findIndex(
+      ({ id: currentId }) => currentId === id
+    );
+    if (favIndex === -1) {
+      favorites.push({ id, name, image });
+    } else {
+      favorites.splice(favIndex, 1);
+    }
+    setFavorites([...favorites]);
+    console.log('Favorites set to ', favorites);
+  };
 
   useEffect(() => {
     async function fetchCharacters() {
@@ -30,6 +45,7 @@ function App() {
         <img
           className="logoRickMorty logoRickiHide"
           src={logoRikMorty}
+          alt="Rickipedia logo"
           title="Rickipedia"
         />
         <h1 className="titleRickipedia">Rickipedia</h1>
@@ -49,7 +65,11 @@ function App() {
       </header>
       <div className="cards">
         {characters.map((character) => (
-          <CharacterCard character={character} />
+          <CharacterCard
+            key={character.id}
+            character={character}
+            onFavorited={handleFavorited}
+          />
         ))}
       </div>
     </main>

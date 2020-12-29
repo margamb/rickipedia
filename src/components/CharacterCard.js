@@ -3,19 +3,34 @@ import React from 'react';
 import dead from '../images/dead1.png';
 import alive from '../images/alive.png';
 
-const CharacterCard = ({ character }) => {
+const CharacterCard = ({ character, onFavorited }) => {
   return (
     <div className="card">
       <div key={character.name}>
         <div className="headerCard">
           <h1 className="titleCharacter">{character.name}</h1>
-          <i class="fa fa-heart-o heart" aria-hidden="true"></i>
+          <i
+            onClick={() => {
+              onFavorited({
+                id: character.id,
+                name: character.name,
+                image: character.image,
+              });
+            }}
+            className="fa fa-heart-o heart"
+            aria-hidden="true"
+          ></i>
           {/* <i class="fa fa-heart" aria-hidden="true"></i> */}
         </div>
         <div className="relative">
-          <img className="imgCharacter" src={character.image} />
+          <img
+            className="imgCharacter"
+            src={character.image}
+            alt={character.name}
+          />
           <img
             className="imgStatus"
+            alt={character.status}
             src={character.status === 'Alive' ? alive : dead}
           />
         </div>
