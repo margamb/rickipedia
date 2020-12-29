@@ -9,7 +9,7 @@ body {
 }
 
 .title {
-  width: 290px;
+  /* width: 290px; */
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -18,12 +18,13 @@ body {
 .heartHeader {
   color: var(--primary);
   font-size: 24px;
+  padding-left: 14px;
 }
 
 .homeHeader {
   color: var(--secondary);
   font-size: 24px;
-  margin-left: 63px;
+  margin-left: -13px;
 }
 
 .cards {
@@ -58,9 +59,13 @@ body {
 .header {
   padding-top: 20px;
   display: flex;
-  flex-direction: column;
+  width: 340px;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-bottom: 15px;
 }
 
 .headerCard {
@@ -79,7 +84,8 @@ body {
 @media only screen and (min-width: 780px) {
   .header {
     flex-direction: row;
-    max-width: 750px;
+    width: 750px;
+    /* max-width: 750px; */
     margin: auto;
   }
 
@@ -87,18 +93,34 @@ body {
     display: flex;
     width: 30px;
     height: 30px;
+    margin-right: 25px;
   }
 
   .titleRickipedia {
-    margin-left: -35px;
-  }
-
-  .heartHeader {
-    margin-right: -45px;
+    margin-left: -119px;
   }
 
   .homeHeader {
     margin-left: 122px;
+  }
+
+  nav {
+    order: 2;
+    margin-left: -221px;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  .header {
+    width: 1130px;
+  }
+
+  nav {
+    margin-left: -424px;
+  }
+
+  .titleRickipedia {
+    margin-left: -333px;
   }
 }
 
@@ -144,7 +166,8 @@ body {
   position: relative;
 }
 .inputText {
-  width: 224px;
+  /* width: 224px; */
+  width: 279px;
   height: 10px;
   border-radius: 0px 0px 0px 0px;
   border: 0;

@@ -53,9 +53,13 @@ function App() {
         />
         <div className="title">
           <h1 className="titleRickipedia">Rickipedia</h1>
+          {/* <i class="fa fa-home homeHeader" aria-hidden="true"></i>
+          <i class="fa fa-heart heartHeader" aria-hidden="true"></i> */}
+        </div>
+        <nav>
           <i class="fa fa-home homeHeader" aria-hidden="true"></i>
           <i class="fa fa-heart heartHeader" aria-hidden="true"></i>
-        </div>
+        </nav>
 
         <form onSubmit={handleSubmit}>
           <div className="input">
