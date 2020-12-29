@@ -3,6 +3,8 @@ import rickMortyAPI from './API';
 import './App.css';
 import dead from './images/dead1.png';
 import alive from './images/alive.png';
+import logoRikMorty from './images/logoRickMorty.png';
+
 function App() {
   const [characters, setCharacters] = useState([]);
 
@@ -26,7 +28,12 @@ function App() {
   return (
     <div className="body">
       <div className="header">
-        <h1>Rickipedia</h1>
+        <img
+          className="logoRickMorty logoRickiHide"
+          src={logoRikMorty}
+          title="Rickipedia"
+        />
+        <h1 className="titleRickipedia">Rickipedia</h1>
         <form onSubmit={handleSubmit}>
           <div className="input">
             <input

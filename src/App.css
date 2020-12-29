@@ -4,6 +4,10 @@ body {
   box-sizing: border-box;
 }
 
+.logoRickMorty {
+  display: none;
+}
+
 .cards {
   max-width: 1200px;
   margin: auto;
@@ -16,7 +20,7 @@ body {
   width: 348px;
   height: 496px;
   margin: 20px;
-  box-shadow: 3px 3px 10px #aaaaaa;
+  box-shadow: 3px 3px 10px var(--gray-600);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +29,7 @@ body {
 }
 
 .card:hover {
-  box-shadow: 6px 6px 13px #aaaaaa;
+  box-shadow: 6px 6px 13px var(--gray-500);
 }
 
 .genderCharacter {
@@ -51,15 +55,25 @@ body {
 .heart {
   font-size: 24px;
   padding: 8px;
-  color: #aaaaaa;
+  color: var(--gray-600);
   margin-top: -10px;
 }
 
 @media only screen and (min-width: 600px) {
   .header {
     flex-direction: row;
-    max-width: 500px;
+    max-width: 525px;
     margin: auto;
+  }
+
+  .logoRickMorty {
+    display: flex;
+    width: 30px;
+    height: 30px;
+  }
+
+  .titleRickipedia {
+    margin-left: -35px;
   }
 }
 
@@ -80,7 +94,7 @@ body {
 
 .status {
   /* margin-left: 113px; */
-  color: #aaaaaa;
+  color: var(--gray-600);
 }
 
 .titleCharacter {
@@ -96,7 +110,7 @@ body {
 }
 
 .typeGrey {
-  color: #aaaaaa;
+  color: var(--gray-600);
 }
 
 /* input search */
@@ -110,7 +124,7 @@ body {
   height: 10px;
   border-radius: 0px 0px 0px 0px;
   border: 0;
-  background-color: #aaaaaa;
+  background-color: var(--gray-500);
   padding: 10px;
   padding-left: 15px;
   outline: none;
@@ -124,17 +138,18 @@ body {
   outline: none;
   padding: 6px;
   padding-right: 15px;
-  background-color: black;
+  background-color: var(--secondary);
+  cursor: pointer;
 }
 
 input::placeholder {
-  color: white;
+  color: var(--white);
   font-size: 14px;
 }
 
 input:focus {
-  color: black;
-  background-color: #d4d3d3;
+  color: var(--black);
+  background-color: var(--gray-600);
   font-size: 14px;
   font-weight: 700;
 }
@@ -143,5 +158,6 @@ input:focus {
   position: absolute;
   top: 5px;
   right: 14px;
-  color: white;
+  color: var(--white);
+  background-color: var(--secondary);
 }
