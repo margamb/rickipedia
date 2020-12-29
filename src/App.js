@@ -7,6 +7,9 @@ import CharacterCard from './components/CharacterCard';
 function App() {
   const [characters, setCharacters] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [currentPage, setCurrentPage] = useState('home');
+
+  // setCurrentPage('favorite')
 
   const handleFavorited = ({ id, name, image }) => {
     // si la id del objeto esta en favoritos quitarla
@@ -48,7 +51,12 @@ function App() {
           alt="Rickipedia logo"
           title="Rickipedia"
         />
-        <h1 className="titleRickipedia">Rickipedia</h1>
+        <div className="title">
+          <h1 className="titleRickipedia">Rickipedia</h1>
+          <i class="fa fa-home homeHeader" aria-hidden="true"></i>
+          <i class="fa fa-heart heartHeader" aria-hidden="true"></i>
+        </div>
+
         <form onSubmit={handleSubmit}>
           <div className="input">
             <input

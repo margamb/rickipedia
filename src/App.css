@@ -8,6 +8,24 @@ body {
   display: none;
 }
 
+.title {
+  width: 290px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.heartHeader {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+.homeHeader {
+  color: var(--secondary);
+  font-size: 24px;
+  margin-left: 63px;
+}
+
 .cards {
   max-width: 1200px;
   margin: auto;
@@ -58,10 +76,10 @@ body {
   margin-top: -10px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 780px) {
   .header {
     flex-direction: row;
-    max-width: 525px;
+    max-width: 750px;
     margin: auto;
   }
 
@@ -73,6 +91,14 @@ body {
 
   .titleRickipedia {
     margin-left: -35px;
+  }
+
+  .heartHeader {
+    margin-right: -45px;
+  }
+
+  .homeHeader {
+    margin-left: 122px;
   }
 }
 
