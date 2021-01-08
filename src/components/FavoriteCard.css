@@ -1,0 +1,31 @@
+.image {
+  width: 89px;
+  height: 89px;
+  border-radius: 100px;
+  margin-top: -20px;
+  z-index: -999;
+}
+
+.fav {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nameFav {
+  font-size: 18px;
+  width: 115px;
+  margin-top: 10px;
+}
+
+.heartFav {
+  font-size: 22px;
+  padding: 8px;
+  color: var(--primary);
+  background-color: var(--white);
+  border-radius: 100px;
+  margin-top: -10px;
+  margin-left: -55px;
+  cursor: pointer;
+}

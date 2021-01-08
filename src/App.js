@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import rickMortyAPI from './API';
 import './App.css';
-import logoRikMorty from './images/logoRickMorty.png';
 import CharacterCard from './components/CharacterCard';
+import Header from './components/Header';
+import FavoriteCard from './components/FavoriteCard';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -25,6 +26,17 @@ function App() {
     console.log('Favorites set to ', favorites);
   };
 
+  const isFavorite = (id) => {
+    const favIndex = favorites.findIndex(
+      ({ id: currentId }) => currentId === id
+    );
+
+    return favIndex !== -1;
+    // return favIndex !== -1 ? true : false
+    // Aqui si que haria falta el condicional porque no queremos devolver un boolean directamente
+    // return favIndex !== -1 ? "ON" : "OFF"
+  };
+
   useEffect(() => {
     async function fetchCharacters() {
       // Get characters data from API
@@ -42,50 +54,46 @@ function App() {
     setCharacters(characters);
   }
 
-  return (
-    <main className="body">
-      <header className="header">
-        <img
-          className="logoRickMorty logoRickiHide"
-          src={logoRikMorty}
-          alt="Rickipedia logo"
-          title="Rickipedia"
+  if (currentPage === 'home') {
+    return (
+      <main className="body">
+        <Header
+          setCurrentPage={setCurrentPage}
+          handleSubmit={handleSubmit}
+          currentPage={currentPage}
         />
-        <div className="title">
-          <h1 className="titleRickipedia">Rickipedia</h1>
-          {/* <i class="fa fa-home homeHeader" aria-hidden="true"></i>
-          <i class="fa fa-heart heartHeader" aria-hidden="true"></i> */}
-        </div>
-        <nav>
-          <i class="fa fa-home homeHeader" aria-hidden="true"></i>
-          <i class="fa fa-heart heartHeader" aria-hidden="true"></i>
-        </nav>
-
-        <form onSubmit={handleSubmit}>
-          <div className="input">
-            <input
-              className="inputText"
-              placeholder="Type a character name"
-              name="searchTerm"
-              type="text"
+        <div className="cards">
+          {characters.map((character) => (
+            <CharacterCard
+              key={character.id}
+              character={character}
+              isFavorite={isFavorite(character.id)}
+              onFavorited={handleFavorited}
             />
-
-            <input className="inputSearch" type="submit" value="" />
-            <i className="fa fa-search searchImg" aria-hidden="true"></i>
-          </div>
-        </form>
-      </header>
-      <div className="cards">
-        {characters.map((character) => (
-          <CharacterCard
-            key={character.id}
-            character={character}
-            onFavorited={handleFavorited}
-          />
-        ))}
+          ))}
+        </div>
+      </main>
+    );
+  } else {
+    return (
+      <div>
+        <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <h1 className="titleFav">My favorites list</h1>;
+        <div className="allFavs">
+          {favorites.map((favorite) => (
+            <FavoriteCard
+              key={favorite.id}
+              name={favorite.name}
+              image={favorite.image}
+              id={favorite.id}
+              onFavorited={handleFavorited}
+              isFavorite={isFavorite(favorite.id)}
+            />
+          ))}
+        </div>
       </div>
-    </main>
-  );
+    );
+  }
 }
 
 export default App;

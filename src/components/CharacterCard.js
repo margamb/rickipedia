@@ -1,9 +1,9 @@
 import React from 'react';
-
 import dead from '../images/dead1.png';
 import alive from '../images/alive.png';
+import './CharacterCard.css';
 
-const CharacterCard = ({ character, onFavorited }) => {
+const CharacterCard = ({ character, isFavorite, onFavorited }) => {
   return (
     <div className="card">
       <div key={character.name}>
@@ -17,10 +17,11 @@ const CharacterCard = ({ character, onFavorited }) => {
                 image: character.image,
               });
             }}
-            className="fa fa-heart-o heart"
+            className={`fa ${
+              isFavorite ? 'fa-heart heart-fav' : 'fa-heart-o heart'
+            } `}
             aria-hidden="true"
           ></i>
-          {/* <i class="fa fa-heart" aria-hidden="true"></i> */}
         </div>
         <div className="relative">
           <img

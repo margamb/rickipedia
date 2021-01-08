@@ -3,28 +3,20 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
-.logoRickMorty {
-  display: none;
-}
-
-.title {
-  /* width: 290px; */
+.allFavs {
+  width: 340px;
+  margin: auto;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
-
-.heartHeader {
-  color: var(--primary);
-  font-size: 24px;
-  padding-left: 14px;
-}
-
-.homeHeader {
+.titleFav {
+  width: 340px;
+  margin: auto;
+  margin-top: -35px;
+  margin-bottom: 15px;
   color: var(--secondary);
   font-size: 24px;
-  margin-left: -13px;
 }
 
 .cards {
@@ -33,22 +25,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.card {
-  width: 348px;
-  height: 496px;
-  margin: 20px;
-  box-shadow: 3px 3px 10px var(--gray-600);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.card:hover {
-  box-shadow: 6px 6px 13px var(--gray-500);
 }
 
 .genderCharacter {
@@ -68,12 +44,6 @@ body {
   margin-bottom: 15px;
 }
 
-.headerCard {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .heart {
   font-size: 24px;
   padding: 8px;
@@ -81,74 +51,11 @@ body {
   margin-top: -10px;
 }
 
-@media only screen and (min-width: 780px) {
-  .header {
-    flex-direction: row;
-    width: 750px;
-    /* max-width: 750px; */
-    margin: auto;
-  }
-
-  .logoRickMorty {
-    display: flex;
-    width: 30px;
-    height: 30px;
-    margin-right: 25px;
-  }
-
-  .titleRickipedia {
-    margin-left: -119px;
-  }
-
-  .homeHeader {
-    margin-left: 122px;
-  }
-
-  nav {
-    order: 2;
-    margin-left: -221px;
-  }
-}
-
-@media only screen and (min-width: 1170px) {
-  .header {
-    width: 1130px;
-  }
-
-  nav {
-    margin-left: -424px;
-  }
-
-  .titleRickipedia {
-    margin-left: -333px;
-  }
-}
-
-.imgCharacter {
-  width: 300px;
-  height: 300px;
-}
-.relative {
-  position: relative;
-}
-.imgStatus {
-  position: absolute;
-  top: 256px;
-  right: 6px;
-  width: 40px;
-  height: 40px;
-}
-
-.status {
-  color: var(--gray-600);
-}
-
-.titleCharacter {
-  font-size: 20px;
-  width: 200px;
-  height: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+.heart-fav {
+  font-size: 24px;
+  padding: 8px;
+  color: var(--primary);
+  margin-top: -10px;
 }
 
 .originCharacter {
@@ -157,54 +64,4 @@ body {
 
 .typeGrey {
   color: var(--gray-600);
-}
-
-/* input search */
-.input {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-.inputText {
-  /* width: 224px; */
-  width: 279px;
-  height: 10px;
-  border-radius: 0px 0px 0px 0px;
-  border: 0;
-  background-color: var(--gray-500);
-  padding: 10px;
-  padding-left: 15px;
-  outline: none;
-}
-
-.inputSearch {
-  width: 40px;
-  height: 30px;
-  border: 0;
-  border-radius: 0px 0px 0px 0px;
-  outline: none;
-  padding: 6px;
-  padding-right: 15px;
-  background-color: var(--secondary);
-  cursor: pointer;
-}
-
-input::placeholder {
-  color: var(--white);
-  font-size: 14px;
-}
-
-input:focus {
-  color: var(--black);
-  background-color: var(--gray-600);
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.searchImg {
-  position: absolute;
-  top: 5px;
-  right: 14px;
-  color: var(--white);
-  background-color: var(--secondary);
 }
