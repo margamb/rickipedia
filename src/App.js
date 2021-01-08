@@ -10,8 +10,6 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState('home');
 
-  // setCurrentPage('favorite')
-
   const handleFavorited = ({ id, name, image }) => {
     // si la id del objeto esta en favoritos quitarla
     const favIndex = favorites.findIndex(
@@ -32,9 +30,6 @@ function App() {
     );
 
     return favIndex !== -1;
-    // return favIndex !== -1 ? true : false
-    // Aqui si que haria falta el condicional porque no queremos devolver un boolean directamente
-    // return favIndex !== -1 ? "ON" : "OFF"
   };
 
   useEffect(() => {
