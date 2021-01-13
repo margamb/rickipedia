@@ -1,0 +1,35 @@
+.arrow-more {
+  width: 44px;
+  height: auto;
+  transform: rotate(-90deg);
+  fill: var(--secondary);
+}
+
+.arrow-less {
+  width: 44px;
+  height: auto;
+  transform: rotate(90deg);
+}
+
+.icon {
+  width: 44px;
+  height: auto;
+  fill: var(--secondary);
+}
+
+.icon:hover {
+  fill: blue;
+  cursor: pointer;
+}
+
+.active {
+  fill: var(--primary);
+}
+
+.left {
+  transform: rotate(90deg);
+}
+
+.right {
+  transform: rotate(-90deg);
+}

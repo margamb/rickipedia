@@ -4,11 +4,14 @@ import './App.css';
 import CharacterCard from './components/CharacterCard';
 import Header from './components/Header';
 import FavoriteCard from './components/FavoriteCard';
+import Pagination from './components/Pagination';
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState('home');
+  const [resultsPage, setResultsPage] = useState(1);
+  const [totalResultPages, setTotalResultsPages] = useState(34);
 
   const handleFavorited = ({ id, name, image }) => {
     // si la id del objeto esta en favoritos quitarla
@@ -35,18 +38,28 @@ function App() {
   useEffect(() => {
     async function fetchCharacters() {
       // Get characters data from API
-      const charactersFromApi = await rickMortyAPI.getCharacters();
+      const charactersFromApi = await rickMortyAPI.getCharacters(resultsPage);
       // Set character state to that result
-      setCharacters(charactersFromApi);
+      setTotalResultsPages(charactersFromApi.pages);
+      setCharacters(charactersFromApi.characters);
     }
     fetchCharacters();
-  }, []);
+  }, [resultsPage]);
 
   async function handleSubmit(ev) {
     ev.preventDefault();
     const { value } = ev.target.elements.searchTerm;
     const characters = await rickMortyAPI.searchCharacter(value);
     setCharacters(characters);
+    console.log(setCharacters(characters));
+  }
+
+  function handlePageUp() {
+    setResultsPage(resultsPage + 1);
+  }
+
+  function handlePageDown() {
+    setResultsPage(resultsPage - 1);
   }
 
   if (currentPage === 'home') {
@@ -67,6 +80,12 @@ function App() {
             />
           ))}
         </div>
+        <Pagination
+          resultsPage={resultsPage}
+          totalPages={totalResultPages}
+          onPageUp={handlePageUp}
+          onPageDown={handlePageDown}
+        />
       </main>
     );
   } else {
