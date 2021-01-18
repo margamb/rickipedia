@@ -8,10 +8,16 @@ import Pagination from './components/Pagination';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [interfaceMode, setInterfaceMode] = useState('');
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState('home');
+  const [searchTerm, setSearchTerm] = useState('');
+
   const [resultsPage, setResultsPage] = useState(1);
   const [totalResultPages, setTotalResultsPages] = useState(34);
+
+  const [searchResultsPage, setSearchResultsPage] = useState(1);
+  const [searchTotalResultsPage, setSearchTotalResultsPage] = useState(1);
 
   const handleFavorited = ({ id, name, image }) => {
     // si la id del objeto esta en favoritos quitarla
@@ -43,23 +49,46 @@ function App() {
       setTotalResultsPages(charactersFromApi.pages);
       setCharacters(charactersFromApi.characters);
     }
-    fetchCharacters();
-  }, [resultsPage]);
+
+    async function searchCharacter() {
+      // Get characters data from API
+      const charactersFromApi = await rickMortyAPI.searchCharacter(
+        searchTerm,
+        searchResultsPage
+      );
+
+      // Set character state to that result
+      setSearchTotalResultsPage(charactersFromApi.pages);
+      setCharacters(charactersFromApi.characters);
+    }
+    if (interfaceMode !== 'search') {
+      fetchCharacters();
+    } else {
+      searchCharacter();
+    }
+  }, [resultsPage, searchTerm, searchResultsPage, interfaceMode]);
 
   async function handleSubmit(ev) {
     ev.preventDefault();
     const { value } = ev.target.elements.searchTerm;
-    const characters = await rickMortyAPI.searchCharacter(value);
-    setCharacters(characters);
-    console.log(setCharacters(characters));
+    setSearchTerm(value);
+    setInterfaceMode('search');
   }
 
   function handlePageUp() {
-    setResultsPage(resultsPage + 1);
+    if (interfaceMode === 'search') {
+      setSearchResultsPage(searchResultsPage + 1);
+    } else {
+      setResultsPage(resultsPage + 1);
+    }
   }
 
   function handlePageDown() {
-    setResultsPage(resultsPage - 1);
+    if (interfaceMode === 'search') {
+      setSearchResultsPage(searchResultsPage - 1);
+    } else {
+      setResultsPage(resultsPage - 1);
+    }
   }
 
   if (currentPage === 'home') {
@@ -70,6 +99,19 @@ function App() {
           handleSubmit={handleSubmit}
           currentPage={currentPage}
         />
+        {interfaceMode === 'search' && (
+          <>
+            <p>Seeing results for {searchTerm}</p>
+            <button
+              onClick={() => {
+                setInterfaceMode('');
+                setSearchTerm('');
+              }}
+            >
+              Reset Search
+            </button>
+          </>
+        )}
         <div className="cards">
           {characters.map((character) => (
             <CharacterCard
@@ -81,8 +123,14 @@ function App() {
           ))}
         </div>
         <Pagination
-          resultsPage={resultsPage}
-          totalPages={totalResultPages}
+          resultsPage={
+            interfaceMode !== 'search' ? resultsPage : searchResultsPage
+          }
+          totalPages={
+            interfaceMode !== 'search'
+              ? totalResultPages
+              : searchTotalResultsPage
+          }
           onPageUp={handlePageUp}
           onPageDown={handlePageDown}
         />
