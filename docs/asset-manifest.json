@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "./static/css/main.dcd5466c.chunk.css",
+    "main.js": "./static/js/main.4acf3096.chunk.js",
+    "main.js.map": "./static/js/main.4acf3096.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.f3b9ddd2.js",
+    "runtime-main.js.map": "./static/js/runtime-main.f3b9ddd2.js.map",
+    "static/js/2.59417387.chunk.js": "./static/js/2.59417387.chunk.js",
+    "static/js/2.59417387.chunk.js.map": "./static/js/2.59417387.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.dcd5466c.chunk.css.map": "./static/css/main.dcd5466c.chunk.css.map",
+    "static/js/2.59417387.chunk.js.LICENSE.txt": "./static/js/2.59417387.chunk.js.LICENSE.txt",
+    "static/media/logoRickMorty.e33528c2.png": "./static/media/logoRickMorty.e33528c2.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f3b9ddd2.js",
+    "static/js/2.59417387.chunk.js",
+    "static/css/main.dcd5466c.chunk.css",
+    "static/js/main.4acf3096.chunk.js"
+  ]
+}
