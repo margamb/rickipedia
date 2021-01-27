@@ -1,25 +1,73 @@
 import React from 'react';
+import { useEffect, useState } from 'react';
+import rickMortyAPI from '../API';
 import Header from '../components/Header';
 import CharacterCard from '../components/CharacterCard';
 import Pagination from '../components/Pagination';
 
 const Home = ({
   setCurrentPage,
-  handleSubmit,
-  interfaceMode,
-  searchTerm,
-  setInterfaceMode,
-  setSearchTerm,
-  characters,
+
   isFavorite,
   handleFavorited,
-  resultsPage,
-  searchResultsPage,
-  totalResultPages,
-  searchTotalResultsPage,
-  handlePageDown,
-  handlePageUp,
 }) => {
+  const [characters, setCharacters] = useState([]);
+  const [resultsPage, setResultsPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [interfaceMode, setInterfaceMode] = useState('');
+  const [totalResultPages, setTotalResultsPages] = useState(34);
+  const [searchResultsPage, setSearchResultsPage] = useState(1);
+  const [searchTotalResultsPage, setSearchTotalResultsPage] = useState(1);
+
+  useEffect(() => {
+    async function fetchCharacters() {
+      // Get characters data from API
+      const charactersFromApi = await rickMortyAPI.getCharacters(resultsPage);
+      // Set character state to that result
+      setTotalResultsPages(charactersFromApi.pages);
+      setCharacters(charactersFromApi.characters);
+    }
+
+    async function searchCharacter() {
+      // Get characters data from API
+      const charactersFromApi = await rickMortyAPI.searchCharacter(
+        searchTerm,
+        searchResultsPage
+      );
+
+      // Set character state to that result
+      setSearchTotalResultsPage(charactersFromApi.pages);
+      setCharacters(charactersFromApi.characters);
+    }
+    if (interfaceMode !== 'search') {
+      fetchCharacters();
+    } else {
+      searchCharacter();
+    }
+  }, [resultsPage, searchTerm, searchResultsPage, interfaceMode]);
+
+  async function handleSubmit(ev) {
+    ev.preventDefault();
+    const { value } = ev.target.elements.searchTerm;
+    setSearchTerm(value);
+    setInterfaceMode('search');
+  }
+
+  function handlePageUp() {
+    if (interfaceMode === 'search') {
+      setSearchResultsPage(searchResultsPage + 1);
+    } else {
+      setResultsPage(resultsPage + 1);
+    }
+  }
+
+  function handlePageDown() {
+    if (interfaceMode === 'search') {
+      setSearchResultsPage(searchResultsPage - 1);
+    } else {
+      setResultsPage(resultsPage - 1);
+    }
+  }
   return (
     <main className="body">
       <Header
