@@ -1,10 +1,8 @@
 import { useEffect, useState } from 'react';
 import rickMortyAPI from './API';
 import './App.css';
-import CharacterCard from './components/CharacterCard';
-import Header from './components/Header';
 import Favorites from './views/Favorites';
-import Pagination from './components/Pagination';
+import Home from './views/Home';
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -93,52 +91,23 @@ function App() {
 
   if (currentPage === 'home') {
     return (
-      <main className="body">
-        <Header
-          setCurrentPage={setCurrentPage}
-          handleSubmit={handleSubmit}
-          currentPage={currentPage}
-        />
-        {interfaceMode === 'search' && (
-          <div className="searchMode">
-            <p className="searchMode-title">
-              Seeing results for{' '}
-              <span className="searchMode-word">{searchTerm}</span>
-            </p>
-            <button
-              className="searchMode-btn"
-              onClick={() => {
-                setInterfaceMode('');
-                setSearchTerm('');
-              }}
-            >
-              reset
-            </button>
-          </div>
-        )}
-        <div className="cards">
-          {characters.map((character) => (
-            <CharacterCard
-              key={character.id}
-              character={character}
-              isFavorite={isFavorite(character.id)}
-              onFavorited={handleFavorited}
-            />
-          ))}
-        </div>
-        <Pagination
-          resultsPage={
-            interfaceMode !== 'search' ? resultsPage : searchResultsPage
-          }
-          totalPages={
-            interfaceMode !== 'search'
-              ? totalResultPages
-              : searchTotalResultsPage
-          }
-          onPageUp={handlePageUp}
-          onPageDown={handlePageDown}
-        />
-      </main>
+      <Home
+        characters={characters}
+        isFavorite={isFavorite}
+        handleFavorited={handleFavorited}
+        handlePageDown={handlePageDown}
+        handlePageUp={handlePageUp}
+        handleSubmit={handleSubmit}
+        totalResultPages={totalResultPages}
+        setCurrentPage={setCurrentPage}
+        interfaceMode={interfaceMode}
+        searchTerm={searchTerm}
+        setInterfaceMode={setInterfaceMode}
+        setSearchTerm={setSearchTerm}
+        resultsPage={resultsPage}
+        searchResultsPage={searchResultsPage}
+        searchTotalResultsPage={searchTotalResultsPage}
+      />
     );
   } else {
     return (
