@@ -14,11 +14,12 @@
 .icon {
   width: 44px;
   height: auto;
+  padding-top: 5px;
   fill: var(--secondary);
 }
 
 .icon:hover {
-  fill: blue;
+  fill: var(--secondary);
   cursor: pointer;
 }
 

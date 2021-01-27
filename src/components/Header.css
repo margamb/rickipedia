@@ -87,7 +87,7 @@ input:focus {
 @media only screen and (min-width: 780px) {
   .header {
     flex-direction: row;
-    width: 750px;
+    width: 715px;
     margin: auto;
   }
 
@@ -99,7 +99,7 @@ input:focus {
   }
 
   .titleRickipedia {
-    margin-left: -119px;
+    margin-left: -34px;
   }
 
   .homeHeader {
@@ -108,20 +108,20 @@ input:focus {
 
   nav {
     order: 2;
-    margin-left: -221px;
+    /* margin-left: -221px; */
   }
 }
 
 @media only screen and (min-width: 1170px) {
   .header {
-    width: 1130px;
+    width: 1110px;
   }
 
-  nav {
-    margin-left: -424px;
+  form {
+    margin-left: 450px;
   }
 
   .titleRickipedia {
-    margin-left: -333px;
+    margin-left: -30px;
   }
 }
