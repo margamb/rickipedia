@@ -3,7 +3,7 @@ import rickMortyAPI from './API';
 import './App.css';
 import CharacterCard from './components/CharacterCard';
 import Header from './components/Header';
-import FavoriteCard from './components/FavoriteCard';
+import Favorites from './views/Favorites';
 import Pagination from './components/Pagination';
 
 function App() {
@@ -142,22 +142,12 @@ function App() {
     );
   } else {
     return (
-      <div>
-        <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
-        {/* <h1 className="titleFav">My favorites list</h1> */}
-        <div className="allFavs">
-          {favorites.map((favorite) => (
-            <FavoriteCard
-              key={favorite.id}
-              name={favorite.name}
-              image={favorite.image}
-              id={favorite.id}
-              onFavorited={handleFavorited}
-              isFavorite={isFavorite(favorite.id)}
-            />
-          ))}
-        </div>
-      </div>
+      <Favorites
+        setCurrentPage={setCurrentPage}
+        favorites={favorites}
+        handleFavorited={handleFavorited}
+        isFavorite={isFavorite}
+      />
     );
   }
 }
