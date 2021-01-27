@@ -100,17 +100,18 @@ function App() {
           currentPage={currentPage}
         />
         {interfaceMode === 'search' && (
-          <>
-            <p>Seeing results for {searchTerm}</p>
+          <div className="searchMode">
+            <p className="searchMode-title">Seeing results for {searchTerm}</p>
             <button
+              className="searchMode-btn"
               onClick={() => {
                 setInterfaceMode('');
                 setSearchTerm('');
               }}
             >
-              Reset Search
+              resert
             </button>
-          </>
+          </div>
         )}
         <div className="cards">
           {characters.map((character) => (
@@ -140,7 +141,7 @@ function App() {
     return (
       <div>
         <Header setCurrentPage={setCurrentPage} currentPage={currentPage} />
-        <h1 className="titleFav">My favorites list</h1>;
+        {/* <h1 className="titleFav">My favorites list</h1> */}
         <div className="allFavs">
           {favorites.map((favorite) => (
             <FavoriteCard
