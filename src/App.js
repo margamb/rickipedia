@@ -101,7 +101,10 @@ function App() {
         />
         {interfaceMode === 'search' && (
           <div className="searchMode">
-            <p className="searchMode-title">Seeing results for {searchTerm}</p>
+            <p className="searchMode-title">
+              Seeing results for{' '}
+              <span className="searchMode-word">{searchTerm}</span>
+            </p>
             <button
               className="searchMode-btn"
               onClick={() => {
@@ -109,7 +112,7 @@ function App() {
                 setSearchTerm('');
               }}
             >
-              resert
+              reset
             </button>
           </div>
         )}

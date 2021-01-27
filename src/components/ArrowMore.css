@@ -19,7 +19,7 @@
 }
 
 .icon:hover {
-  fill: blue;
+  fill: var(--secondary);
   cursor: pointer;
 }
 
