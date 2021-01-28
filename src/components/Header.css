@@ -44,6 +44,7 @@ input:focus {
   right: 14px;
   color: var(--white);
   background-color: var(--secondary);
+  font-size: 16px;
 }
 
 .logoRickMorty {
@@ -108,7 +109,6 @@ input:focus {
 
   nav {
     order: 2;
-    /* margin-left: -221px; */
   }
 }
 

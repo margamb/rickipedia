@@ -49,8 +49,9 @@ const Header = ({ handleSubmit, setCurrentPage, currentPage }) => {
               type="text"
             />
 
-            <input className="inputSearch" type="submit" value="" />
-            <i className="fa fa-search searchImg" aria-hidden="true"></i>
+            <button className="inputSearch" type="submit" value="">
+              <i className="fa fa-search searchImg" aria-hidden="true"></i>
+            </button>
           </div>
         </form>
       ) : (
